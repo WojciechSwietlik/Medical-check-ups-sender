@@ -1,4 +1,4 @@
-package pl.coderslab.medicalcheckupssender.web;
+package pl.coderslab.medicalcheckupssender.Web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
