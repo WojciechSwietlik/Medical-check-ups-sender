@@ -1,6 +1,7 @@
 package pl.coderslab.medicalcheckupssender.Employee;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.pl.PESEL;
@@ -9,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -19,20 +21,23 @@ import java.time.LocalDate;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
-    @NotBlank
+    private Long ID;
+    @NotNull
     private String Surname;
-    @NotBlank
+    @NotNull
     private String Name;
-    @DateTimeFormat
+    @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate DateOfBirth;
     @PESEL
     private Integer PESEL;
-    @NotBlank
-    private String JobTitle;
+    @NotNull
+    private String JobTitle; //tutaj referencje do RefferalType
     @Email
     private String Email;
-    @NotBlank
+    @NotNull
     private Integer PhoneNumber;
+    @NotNull
+    private String WorkPlace; //tutaj referencje do HealthFacility
 
 }

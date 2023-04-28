@@ -32,15 +32,15 @@ public class EmployeeService {
 
     public EmployeeDTO addEmployee(EmployeeDTO employeeDTO) {
         Employee employee = employeeMapper.mapToEntity(employeeDTO);
-        Assert.isNull(employee.getId(), "ID cannot be null");
+        Assert.isNull(employee.getID(), "ID cannot be null");
         employeeRepository.save(employee);
         return employeeMapper.mapToDto(employee);
     }
 
 
     public EmployeeDTO updateEmployee(Long id, EmployeeDTO employeeDTO) throws IdMismatchException {
-        Assert.notNull(employeeDTO.getId(), "ID cannot be null");
-        if (!employeeDTO.getId().equals(id)) {
+        Assert.notNull(employeeDTO.getID(), "ID cannot be null");
+        if (!employeeDTO.getID().equals(id)) {
             throw new IdMismatchException("ID's mismatch");
         }
         if (!employeeRepository.existsById(id)) {

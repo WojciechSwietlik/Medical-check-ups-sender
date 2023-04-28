@@ -13,21 +13,21 @@ import java.time.LocalDateTime;
 @Setter
 public class EmployeeDTO {
     @Schema(description = "Employee id", example = "2")
-    private Long id;
+    private Long ID;
 
     @Schema(description = "Employee name", example = "Marek", required = true)
     @NotBlank
-    private String name;
+    private String Name;
 
     @Schema(description = "Employee surname", example = "Kowalski", required = true)
     @NotBlank
-    private String surname;
+    private String Surname;
 
     @Schema(description = "Employee date of birth", example = "1990.01.01", required = true)
     @DateTimeFormat
-    private LocalDateTime dateOfBirth;
+    private LocalDateTime DateOfBirth;
 
     @Schema(description = "Job title", example = "Director", required = true)
     @NotBlank
-    private String jobTitle;
+    private String JobTitle;
 }
