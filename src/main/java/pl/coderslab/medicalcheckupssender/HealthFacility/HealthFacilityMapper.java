@@ -1,19 +1,14 @@
 package pl.coderslab.medicalcheckupssender.HealthFacility;
-
-import org.apache.coyote.http11.HeadersTooLargeException;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface HealthFacilityMapper {
-    HealthFacility mapToEntity(HealthFacilityDTO dto);
 
-    @Mapping(source = "healthfacility.city", target = "employeeworkplace")
-    HealthFacilityDTO mapToDto(HealthFacilityDTO entity);
+    HealthFacility mapToEntity(HealthFacilityDto dto);
 
-    List<HealthFacilityDTO> mapToDto(List<HealthFacility> all);
+    HealthFacilityDto mapToDto(HealthFacility healthFacility);
 
-    HealthFacilityDTO mapToDto(HealthFacility orElse);
+    List<HealthFacilityDto> mapToDto(List<HealthFacility> healthFacilities);
 }

@@ -1,0 +1,48 @@
+### Add healt facility
+POST http://localhost:8080/api/healthFacility
+Content-Type: application/json
+
+{
+  "nameOfHealthFacility": "LUXmed",
+  "streetName": "Chmielna",
+  "houseNumber": "83",
+  "zipCode": "00-100",
+  "city": "Warszawa",
+  "phoneNumber": "12 340 11 52"
+}
+### Add healt facility
+POST http://localhost:8080/api/healthFacility
+Content-Type: application/json
+
+{
+  "nameOfHealthFacility": "PZU Zdrowie",
+  "streetName": "Kotlarska",
+  "houseNumber": "12/11",
+  "zipCode": "31-122",
+  "city": "Kraków",
+  "phoneNumber": "22 430 12 53"
+}
+### Add healt facility
+POST http://localhost:8080/api/healthFacility
+Content-Type: application/json
+
+{
+  "nameOfHealthFacility": "NZOZ SANA Med",
+  "streetName": "Bolesława Chrobrego",
+  "houseNumber": "122",
+  "zipCode": "32-142",
+  "city": "Poznań",
+  "phoneNumber": "42 550 72 83"
+}
+### Add healt facility
+POST http://localhost:8080/api/healthFacility
+Content-Type: application/json
+
+{
+  "nameOfHealthFacility": "Dr DRE & Dr Lubicz ",
+  "streetName": "Mieszka I",
+  "houseNumber": "4/5",
+  "zipCode": "66-155",
+  "city": "Rzeszów",
+  "phoneNumber": "43 567 45 54"
+}

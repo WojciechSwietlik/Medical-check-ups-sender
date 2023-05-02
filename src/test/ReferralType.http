@@ -1,0 +1,16 @@
+### Add referral type
+POST http://localhost:8080/api/referralTypes
+Content-Type: application/json
+
+{
+
+  "injuryFactors1": "praca przed monitorem powyżej 4h",
+  "injuryFactors2": "duży napływ informacji i gotowość do odpowiedzi",
+  "injuryFactors3": "praca w wymuszonej pozycji",
+  "injuryFactors4": "brak"
+
+}
+
+### Delete referral type
+DELETE http://localhost:8080/api/referralTypes/1
+Content-Type: application/json

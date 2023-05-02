@@ -1,0 +1,94 @@
+### Add employee
+POST http://localhost:8080/api/employees
+Content-Type: application/json
+
+{
+  "surname": "Abakanowicz",
+  "name": "Adam",
+  "dateOfBirth": "1990-01-01",
+  "pesel": "90010152976",
+  "email": "a.abakanowicz@alior.pl",
+  "phoneNumber": "666666666",
+  "jobTitle":"Doradca klienta",
+  "workPlace": "Kraków"
+}
+### Add employee
+POST http://localhost:8080/api/employees
+Content-Type: application/json
+
+{
+  "surname": "Malczewski",
+  "name": "Jacek",
+  "dateOfBirth": "1968-02-01",
+  "pesel": "68020174677",
+  "email": "m.malczewski@alior.pl",
+  "phoneNumber": "555555555",
+  "jobTitle":"Dyrektor Oddziału",
+  "workPlace": "Warszawa"
+}
+### Add employee
+POST http://localhost:8080/api/employees
+Content-Type: application/json
+
+{
+  "surname": "Matejko",
+  "name": "Adam",
+  "dateOfBirth": "1989-03-11",
+  "pesel": "89031198818",
+  "email": "a.matejko@alior.pl",
+  "phoneNumber": "444444444",
+  "jobTitle":"Specjalista ds. Help Desk",
+  "workPlace": "Gdańsk"
+}
+### Add employee
+POST http://localhost:8080/api/employees
+Content-Type: application/json
+
+{
+  "surname": "Duda-Gracz",
+  "name": "Antoni",
+  "dateOfBirth": "1987-04-25",
+  "pesel": "87042598591",
+  "email": "a.duda-gracz@alior.pl",
+  "phoneNumber": "333333333",
+  "jobTitle":"Specjalista ds. Windykacji Terenowej",
+  "workPlace": "Poznań"
+}
+
+### Add employee
+POST http://localhost:8080/api/employees
+Content-Type: application/json
+
+{
+  "surname": "Kossakowska",
+  "name": "Maja",
+  "dateOfBirth": "1981-05-21",
+  "pesel": "81052174349",
+  "email": "maja.kossakowska@alior.pl",
+  "phoneNumber": "222222222",
+  "jobTitle":"Ekspert ds. Kadr i Płac",
+  "workPlace": "Kraków"
+}
+
+### Add employee
+POST http://localhost:8080/api/employees
+Content-Type: application/json
+
+{
+"surname": "Sapkowski",
+"name": "Marian",
+"dateOfBirth": "1969-06-10",
+"pesel": "69061036632",
+"email": "marian.sapkowski@alior.pl",
+"phoneNumber": "111111111",
+"jobTitle":"Menedżer Zespołu Infolinii",
+"workPlace": "Rzeszów"
+}
+
+### Get list
+GET http://localhost:8080/api/employees
+Content-Type: application/json
+
+### Get employee
+GET http://localhost:8080/api/employees/2
+Content-Type: application/json

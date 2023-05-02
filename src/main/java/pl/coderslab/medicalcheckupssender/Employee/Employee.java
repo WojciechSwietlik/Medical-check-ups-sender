@@ -1,43 +1,44 @@
 package pl.coderslab.medicalcheckupssender.Employee;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.pl.PESEL;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
-@Getter
-@Setter
+@Data
 @Entity
-@Table(name = "Employees")
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "employees")
 
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
-    @NotNull
-    private String Surname;
-    @NotNull
-    private String Name;
-    @NotNull
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private LocalDate DateOfBirth;
+    private Long id;
+    @NotBlank
+    @Size(min = 2, max = 30)
+    private String surname;
+    @NotBlank
+    @Size(min = 2, max = 30)
+    private String name;
+   @Past
+   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate dateOfBirth;
     @PESEL
-    private Integer PESEL;
-    @NotNull
-    private String JobTitle; //tutaj referencje do RefferalType
+    private String pesel;
     @Email
-    private String Email;
-    @NotNull
-    private Integer PhoneNumber;
-    @NotNull
-    private String WorkPlace; //tutaj referencje do HealthFacility
+    private String email;
+    @NotBlank
+    private String phoneNumber;
+    @NotBlank
+    private String jobTitle; //tutaj referencje do RefferalType
+    @NotBlank
+    private String workPlace; //tutaj referencje do HealthFacility
 
 }

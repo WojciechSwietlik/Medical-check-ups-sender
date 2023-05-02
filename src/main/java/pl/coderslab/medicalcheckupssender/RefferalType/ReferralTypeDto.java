@@ -1,18 +1,12 @@
 package pl.coderslab.medicalcheckupssender.RefferalType;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.*;
+@Getter
+@Setter
+public class ReferralTypeDto {
 
-@Data
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "referralType")
-public class ReferralType {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String type;
@@ -26,6 +20,4 @@ public class ReferralType {
     private String injuryFactors4;
 
     private String injuryFactors5;
-
-
 }

@@ -1,5 +1,4 @@
 package pl.coderslab.medicalcheckupssender.EmployeeAddress;
-
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import pl.coderslab.medicalcheckupssender.Employee.Employee;
@@ -16,59 +15,58 @@ public class EmployeeAddressService {
     private final EmployeeRepository employeeRepository;
     private final EmployeeAddressMapper employeeAddressMapper;
 
-    public EmployeeAddressService(EmployeeAddressRepository employeeAddressRepository, EmployeeRepository employeeRepository,
-                                  EmployeeAddressMapper employeeAddressMapper) {
+    public EmployeeAddressService(EmployeeAddressRepository employeeAddressRepository, EmployeeRepository employeeRepository, EmployeeAddressMapper employeeAddressMapper) {
         this.employeeAddressRepository = employeeAddressRepository;
         this.employeeRepository = employeeRepository;
         this.employeeAddressMapper = employeeAddressMapper;
     }
 
-    public List<EmployeeAddressDTO> getAll() {
+    public List<EmployeeAddressDto> getAll() {
         return employeeAddressMapper.mapToDto(employeeAddressRepository.findAll());
     }
 
-    public EmployeeAddressDTO getById(Long id) {
+    public EmployeeAddressDto getById(Long id) {
         return employeeAddressMapper.mapToDto(employeeAddressRepository.findById(id).orElse(null));
     }
 
     public void deleteById(Long id) {
-        employeeRepository.deleteById(id);
+        employeeAddressRepository.deleteById(id);
     }
 
-    public EmployeeAddressDTO addEmployeeAddress(EmployeeAddressDTO dto) {
-        EmployeeAddress employeeAddress = employeeAddressMapper.mapToEntity(dto);
-        Assert.isNull(employeeAddress.getID(), "Id has to be null");
-        Employee employee = null;
+    public EmployeeAddressDto addEmployeeAddress(EmployeeAddressDto dto) {
+        EmployeeAddress address = employeeAddressMapper.mapToEntity(dto);
+        Assert.isNull(address.getId(), "Id has to be null");
+        Employee employee;
         try {
-            employee = employeeRepository.findById(dto.getEmployeeID()).orElseThrow(() -> new ResourceNotFoundException("Employee doesn't exist"));
+            employee = employeeRepository.findById(dto.getEmployeeId()).orElseThrow(() -> new ResourceNotFoundException("Address doesn't exist"));
         } catch (ResourceNotFoundException e) {
             throw new RuntimeException(e);
         }
-        employeeAddress.setEmployee(employee);
-        employeeAddressRepository.save(employeeAddress);
-        return employeeAddressMapper.mapToDto(employeeAddress);
+        address.setEmployee(employee);
+        employeeAddressRepository.save(address);
+        return employeeAddressMapper.mapToDto(address);
     }
 
-    public EmployeeAddressDTO updateEmplyeeAddress(Long id, EmployeeAddressDTO dto) {
-        Assert.notNull(dto.getEmployeeID(), "ID cannot be null");
-        if (!dto.getEmployeeID().equals(id)) {
+    public EmployeeAddressDto updateEmployeeAddress(Long id, EmployeeAddressDto dto) {
+        Assert.notNull(dto.getId(), "Id cannot be empty");
+        if (!dto.getId().equals(id)) {
             try {
-                throw new IdMismatchException("ID's mismatch");
+                throw new IdMismatchException("Id's mismatch");
             } catch (IdMismatchException e) {
                 throw new RuntimeException(e);
             }
         }
         if (!employeeAddressRepository.existsById(id)) {
             try {
-                throw new ResourceNotFoundException("That emloyee address doesn't exist");
+                throw new ResourceNotFoundException("Employee address doesn't exist");
             } catch (ResourceNotFoundException e) {
                 throw new RuntimeException(e);
             }
         }
         EmployeeAddress entity = employeeAddressMapper.mapToEntity(dto);
-        Employee employee = null;
+        Employee employee;
         try {
-            employee = employeeRepository.findById(dto.getEmployeeID()).orElseThrow(() -> new ResourceNotFoundException("Employee doesn't exist"));
+            employee = employeeRepository.findById(dto.getEmployeeId()).orElseThrow(() -> new ResourceNotFoundException("Employee doesn't exist"));
         } catch (ResourceNotFoundException e) {
             throw new RuntimeException(e);
         }

@@ -1,19 +1,14 @@
 package pl.coderslab.medicalcheckupssender.HealthFacility;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+@Getter
+@Setter
 
-@Data
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "healthFacility")
-public class HealthFacility {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class HealthFacilityDto {
     private Long id;
     @NotBlank
     private String nameOfHealthFacility;

@@ -1,57 +1,45 @@
 package pl.coderslab.medicalcheckupssender.Employee;
-
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.medicalcheckupssender.Exception.IdMismatchException;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/employees")
+@RequestMapping("api/employees")
 public class EmployeeController {
-
     private final EmployeeService employeeService;
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
-    @Operation(summary = "Get all employee's", description = "Get list of all employee's")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Success",
-                    content = @Content(schema = @Schema(implementation = EmployeeDTO[].class))),
-            @ApiResponse(responseCode = "404", description = "Employee's cannot be found")
-    })
-
-    @PostMapping
-    public ResponseEntity<EmployeeDTO> addEmployee(@RequestBody @Valid EmployeeDTO employee) {
-        EmployeeDTO employeeDTO = employeeService.addEmployee(employee);
-        return ResponseEntity.ok(employeeDTO);
+    @GetMapping
+    public ResponseEntity<List<EmployeeDto>> getEmployee() {
+        List<EmployeeDto> employee = employeeService.getAll();
+        if (employee.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(employee);
+        }
     }
 
-    @Operation(summary = "Get employee by id", description = "Get employee based on it's id")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Success",
-                    content = @Content(schema = @Schema(implementation = EmployeeDTO.class))),
-            @ApiResponse(responseCode = "404", description = "Employee cannot be found")
-    })
+    @PostMapping
+    public ResponseEntity<EmployeeDto> addEmployee(@RequestBody @Valid EmployeeDto employee) {
+        EmployeeDto dto = employeeService.addEmployee(employee);
+        return ResponseEntity.ok(dto);
+    }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EmployeeDTO> getEmployee(@PathVariable Long id) {
-        EmployeeDTO employeeDTO = employeeService.getById(id);
-        return employeeDTO != null ? ResponseEntity.ok(employeeDTO) : ResponseEntity.notFound().build();
+    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable Long id) {
+        EmployeeDto dto = employeeService.getById(id);
+        return dto != null ? ResponseEntity.ok(dto) : ResponseEntity.notFound().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Long id, @RequestBody @Valid EmployeeDTO employee) throws IdMismatchException {
-        EmployeeDTO employeeDTO = employeeService.updateEmployee(id, employee);
-        return ResponseEntity.ok(employeeDTO);
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @RequestBody @Valid EmployeeDto employee) {
+        EmployeeDto dto = employeeService.updateEmployee(id, employee);
+        return ResponseEntity.ok(dto);
     }
 
     @DeleteMapping("/{id}")

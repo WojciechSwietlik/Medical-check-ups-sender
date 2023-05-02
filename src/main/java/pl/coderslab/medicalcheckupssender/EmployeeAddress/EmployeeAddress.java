@@ -1,46 +1,29 @@
 package pl.coderslab.medicalcheckupssender.EmployeeAddress;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import pl.coderslab.medicalcheckupssender.Employee.Employee;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
-@Getter
-@Setter
+@Data
 @Entity
-@Table(name = "EmployeeAddress")
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "employeeAddresses")
 public class EmployeeAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long id;
     @OneToOne
-    @NotNull
     Employee employee;
-    @NotNull
-    private String StreetName;
-    @NotNull
-    private Integer HouseNumber;
-    @NotNull
-    private Integer ApartmentNumber;
-    @NotNull
-    private Integer ZipCode;
-    @NotNull
-    private String City;
+    private String streetName;
+    private String houseNumber;
+    private String apartmentNumber;
+    @NotBlank
+    private String zipCode;
+    @NotBlank
+    private String city;
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof EmployeeAddress ea) {
-            return Objects.equals(ID, ea.ID);
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(ID);
-    }
 }

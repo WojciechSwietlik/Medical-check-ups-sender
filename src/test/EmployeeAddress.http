@@ -1,0 +1,76 @@
+### Add employee address
+POST http://localhost:8080/api/employees/address/1
+Content-Type: application/json
+
+{
+  "employeeId": 1,
+  "streetName": "Geralta z Rivii",
+  "houseNumber": "1A",
+  "apartmentNumber":"1",
+  "zipCode": "00-001",
+  "city": "Kraków"
+}
+### Add employee address
+POST http://localhost:8080/api/employees/address/2
+Content-Type: application/json
+
+{
+  "employeeId": 2,
+  "streetName": "Yeneffer z Venderbergu",
+  "houseNumber": "69",
+  "apartmentNumber":"1/3",
+  "zipCode": "00-002",
+  "city": "Warszawa"
+}
+### Add employee address
+POST http://localhost:8080/api/employees/address/3
+Content-Type: application/json
+
+{
+  "employeeId": 3,
+  "streetName": "Lwicy z Północy",
+  "houseNumber": "22",
+  "apartmentNumber":"11",
+  "zipCode": "00-003",
+  "city": "Gdańsk"
+}
+### Add employee address
+POST http://localhost:8080/api/employees/address/4
+Content-Type: application/json
+
+{
+  "employeeId": 4,
+  "streetName": "Yarpena Zigrina",
+  "houseNumber": "2",
+  "apartmentNumber":"3",
+  "zipCode": "00-004",
+  "city": "Poznań"
+}
+### Add employee address
+POST http://localhost:8080/api/employees/address/5
+Content-Type: application/json
+
+{
+  "employeeId": 5,
+  "streetName": "Jaskra",
+  "houseNumber": "29",
+  "apartmentNumber":"93",
+  "zipCode": "00-005",
+  "city": "Kraków"
+}
+### Add employee address
+POST http://localhost:8080/api/employees/address/6
+Content-Type: application/json
+
+{
+  "employeeId": 6,
+  "streetName": "Regisa",
+  "houseNumber": "2",
+  "apartmentNumber":"",
+  "zipCode": "00-006",
+  "city": "Rzeszów"
+}
+
+### Gets employee address by id
+GET http://localhost:8080/api/employees/address/6
+Content-Type: application/json

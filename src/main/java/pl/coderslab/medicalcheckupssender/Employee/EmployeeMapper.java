@@ -4,11 +4,13 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
+
 @Mapper(componentModel = "spring")
 public interface EmployeeMapper {
-    Employee mapToEntity(EmployeeDTO employeeDTO);
 
-    EmployeeDTO mapToDto(Employee employee);
+    Employee mapToEntity(EmployeeDto dto);
 
-    List<Employee> mapToDto(List<Employee> employees);
+    EmployeeDto mapToDto(Employee employee);
+
+    List<EmployeeDto> mapToDto(List<Employee> employees);
 }
