@@ -21,19 +21,15 @@ public class EmployeeService {
         return employeeMapper.mapToDto(employeeRepository.findAll());
     }
 
-    public EmployeeDto getById(Long id) {
-        return employeeMapper.mapToDto(employeeRepository.findById(id).orElse(null));
-    }
-
-    public void deleteById(Long id) {
-        employeeRepository.deleteById(id);
-    }
-
     public EmployeeDto addEmployee(EmployeeDto dto) {
         Employee employee = employeeMapper.mapToEntity(dto);
         Assert.isNull(employee.getId(), "Id has to be null");
         employeeRepository.save(employee);
         return employeeMapper.mapToDto(employee);
+    }
+
+    public EmployeeDto getById(Long id) {
+        return employeeMapper.mapToDto(employeeRepository.findById(id).orElse(null));
     }
 
     public EmployeeDto updateEmployee(Long id, EmployeeDto dto) {
@@ -48,4 +44,9 @@ public class EmployeeService {
         employeeRepository.save(entity);
         return employeeMapper.mapToDto(entity);
     }
+
+    public void deleteById(Long id) {
+        employeeRepository.deleteById(id);
+    }
+
 }

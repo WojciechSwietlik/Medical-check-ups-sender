@@ -1,0 +1,48 @@
+### Add referral type
+POST http://localhost:8080/api/referral
+Content-Type: application/json
+
+{
+  "description": "1 - office worker",
+  "harmfulFactors1": "Stress",
+  "harmfulFactors2": "Work in a forced position",
+  "harmfulFactors3": "N/A",
+  "harmfulFactors4": "N/A",
+  "harmfulFactors5": "N/A"
+}
+### Add referral type
+POST http://localhost:8080/api/referral
+Content-Type: application/json
+
+{
+  "description": "2 - callcenter worker",
+  "harmfulFactors1": "Stress",
+  "harmfulFactors2": "Work in a forced position",
+  "harmfulFactors3": "Working with headphones",
+  "harmfulFactors4": "N/A",
+  "harmfulFactors5": "N/A"
+}
+### Add referral type
+POST http://localhost:8080/api/referral
+Content-Type: application/json
+
+{
+  "description": "3 - supervisor",
+  "harmfulFactors1": "Stress",
+  "harmfulFactors2": "Work in a forced position",
+  "harmfulFactors3": "Decision-making and accountability position",
+  "harmfulFactors4": "N/A",
+  "harmfulFactors5": "N/A"
+}
+### Add referral type
+POST http://localhost:8080/api/referral
+Content-Type: application/json
+
+{
+  "description": "4 - company car",
+  "harmfulFactors1": "Stress",
+  "harmfulFactors2": "Work in a forced position",
+  "harmfulFactors3": "Driving a company car",
+  "harmfulFactors4": "N/A",
+  "harmfulFactors5": "N/A"
+}

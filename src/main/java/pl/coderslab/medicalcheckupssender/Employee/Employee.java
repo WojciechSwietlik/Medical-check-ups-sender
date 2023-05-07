@@ -3,6 +3,7 @@ package pl.coderslab.medicalcheckupssender.Employee;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.validator.constraints.pl.PESEL;
+import pl.coderslab.medicalcheckupssender.RefferalType.ReferralType;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -27,8 +28,8 @@ public class Employee {
     @NotBlank
     @Size(min = 2, max = 30)
     private String name;
-   @Past
-   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @Past(message = "Enter your date of birth in the format yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
     @PESEL
     private String pesel;
@@ -37,8 +38,9 @@ public class Employee {
     @NotBlank
     private String phoneNumber;
     @NotBlank
-    private String jobTitle; //tutaj referencje do RefferalType
+    private String jobTitle;
     @NotBlank
-    private String workPlace; //tutaj referencje do HealthFacility
-
+    private String workPlace;
+    @OneToOne
+    private ReferralType referralType;
 }

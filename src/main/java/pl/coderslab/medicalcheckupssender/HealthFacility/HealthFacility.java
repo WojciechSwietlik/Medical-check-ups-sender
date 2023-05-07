@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 
 @Data
@@ -22,6 +23,7 @@ public class HealthFacility {
     @NotBlank
     private String houseNumber;
     @NotBlank
+    @Pattern(regexp = "[0-9][0-9]-[0-9][0-9][0-9]")
     private String zipCode;
     @NotBlank
     private String city;

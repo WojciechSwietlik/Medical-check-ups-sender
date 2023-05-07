@@ -3,12 +3,12 @@ POST http://localhost:8080/api/healthFacility
 Content-Type: application/json
 
 {
-  "nameOfHealthFacility": "LUXmed",
-  "streetName": "Chmielna",
-  "houseNumber": "83",
-  "zipCode": "00-100",
-  "city": "Warszawa",
-  "phoneNumber": "12 340 11 52"
+  "nameOfHealthFacility": "Szpital Rydygiera",
+  "streetName": "Na Wzgórzach",
+  "houseNumber": "50/80",
+  "zipCode": "00-200",
+  "city": "Katowice",
+  "phoneNumber": "32 440 51 42"
 }
 ### Add healt facility
 POST http://localhost:8080/api/healthFacility

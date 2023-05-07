@@ -71,6 +71,10 @@ Content-Type: application/json
   "city": "Rzeszów"
 }
 
-### Gets employee address by id
+### Get employee address by id
 GET http://localhost:8080/api/employees/address/6
+Content-Type: application/json
+
+### Get all employee address
+GET http://localhost:8080/api/employees/address
 Content-Type: application/json

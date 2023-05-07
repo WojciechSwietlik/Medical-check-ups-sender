@@ -5,6 +5,7 @@ import pl.coderslab.medicalcheckupssender.Employee.Employee;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.Objects;
 
 @Data
@@ -17,13 +18,15 @@ public class EmployeeAddress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne
-    Employee employee;
+    private Employee employee;
+    @NotBlank
     private String streetName;
+    @NotBlank
     private String houseNumber;
     private String apartmentNumber;
     @NotBlank
+    @Pattern(regexp = "[0-9][0-9]-[0-9][0-9][0-9]")
     private String zipCode;
     @NotBlank
     private String city;
-
 }

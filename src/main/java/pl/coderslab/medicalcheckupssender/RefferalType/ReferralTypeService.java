@@ -2,7 +2,6 @@ package pl.coderslab.medicalcheckupssender.RefferalType;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
@@ -17,23 +16,11 @@ public class ReferralTypeService {
         this.referralTypeMapper = referralTypeMapper;
     }
 
-    public List<ReferralTypeDto> getAll() {
-        return referralTypeMapper.mapToDto(referralTypeRepository.findAll());
-    }
-
-    public ReferralTypeDto getById(Long id) {
-        return referralTypeMapper.mapToDto(referralTypeRepository.findById(id).orElse(null));
-    }
-
-    public void deleteById(Long id) {
-        referralTypeRepository.deleteById(id);
-    }
-
     public ReferralTypeDto addReferralType(ReferralTypeDto dto) {
-        ReferralType referralType = referralTypeMapper.mapToEntity(dto);
-        Assert.isNull(referralType.getId(), "Id has to be null");
-        referralTypeRepository.save(referralType);
-        return referralTypeMapper.mapToDto(referralType);
+        ReferralType referral = referralTypeMapper.mapToEntity(dto);
+        Assert.isNull(referral.getId(), "Id has to be null");
+        referralTypeRepository.save(referral);
+        return referralTypeMapper.mapToDto(referral);
     }
 
     public ReferralTypeDto updateRefferalType(Long id, ReferralTypeDto dto) {
@@ -48,4 +35,16 @@ public class ReferralTypeService {
         referralTypeRepository.save(entity);
         return referralTypeMapper.mapToDto(entity);
     }
+    public List<ReferralTypeDto> getAll() {
+        return referralTypeMapper.mapToDto(referralTypeRepository.findAll());
+    }
+
+    public ReferralTypeDto getById(Long id) {
+        return referralTypeMapper.mapToDto(referralTypeRepository.findById(id).orElse(null));
+    }
+
+    public void deleteById(Long id) {
+        referralTypeRepository.deleteById(id);
+    }
+
 }

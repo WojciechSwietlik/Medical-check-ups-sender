@@ -17,18 +17,6 @@ public class HealthFacilityService {
         this.healthFacilityMapper = healthFacilityMapper;
     }
 
-    public List<HealthFacilityDto> getAll() {
-        return healthFacilityMapper.mapToDto(healthFacilityRepository.findAll());
-    }
-
-    public HealthFacilityDto getById(Long id) {
-        return healthFacilityMapper.mapToDto(healthFacilityRepository.findById(id).orElse(null));
-    }
-
-    public void deleteById(Long id) {
-        healthFacilityRepository.deleteById(id);
-    }
-
     public HealthFacilityDto addHealthFacility(HealthFacilityDto dto) {
         HealthFacility healthFacility = healthFacilityMapper.mapToEntity(dto);
         Assert.isNull(healthFacility.getId(), "Id has to be null");
@@ -48,4 +36,17 @@ public class HealthFacilityService {
         healthFacilityRepository.save(entity);
         return healthFacilityMapper.mapToDto(entity);
     }
+
+    public List<HealthFacilityDto> getAll() {
+        return healthFacilityMapper.mapToDto(healthFacilityRepository.findAll());
+    }
+
+    public HealthFacilityDto getById(Long id) {
+        return healthFacilityMapper.mapToDto(healthFacilityRepository.findById(id).orElse(null));
+    }
+
+    public void deleteById(Long id) {
+        healthFacilityRepository.deleteById(id);
+    }
+
 }

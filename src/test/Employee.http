@@ -9,9 +9,11 @@ Content-Type: application/json
   "pesel": "90010152976",
   "email": "a.abakanowicz@alior.pl",
   "phoneNumber": "666666666",
-  "jobTitle":"Doradca klienta",
-  "workPlace": "Kraków"
+  "jobTitle": "Doradca klienta",
+  "workPlace": "Kraków",
+  "referralTypeId": 1
 }
+
 ### Add employee
 POST http://localhost:8080/api/employees
 Content-Type: application/json
@@ -23,9 +25,11 @@ Content-Type: application/json
   "pesel": "68020174677",
   "email": "m.malczewski@alior.pl",
   "phoneNumber": "555555555",
-  "jobTitle":"Dyrektor Oddziału",
-  "workPlace": "Warszawa"
+  "jobTitle": "Dyrektor Oddziału",
+  "workPlace": "Warszawa",
+  "referralTypeId": 2
 }
+
 ### Add employee
 POST http://localhost:8080/api/employees
 Content-Type: application/json
@@ -37,9 +41,11 @@ Content-Type: application/json
   "pesel": "89031198818",
   "email": "a.matejko@alior.pl",
   "phoneNumber": "444444444",
-  "jobTitle":"Specjalista ds. Help Desk",
-  "workPlace": "Gdańsk"
+  "jobTitle": "Specjalista ds. Help Desk",
+  "workPlace": "Gdańsk",
+  "referralTypeId": 3
 }
+
 ### Add employee
 POST http://localhost:8080/api/employees
 Content-Type: application/json
@@ -51,8 +57,9 @@ Content-Type: application/json
   "pesel": "87042598591",
   "email": "a.duda-gracz@alior.pl",
   "phoneNumber": "333333333",
-  "jobTitle":"Specjalista ds. Windykacji Terenowej",
-  "workPlace": "Poznań"
+  "jobTitle": "Specjalista ds. Windykacji Terenowej",
+  "workPlace": "Poznań",
+  "referralTypeId": 4
 }
 
 ### Add employee
@@ -66,8 +73,9 @@ Content-Type: application/json
   "pesel": "81052174349",
   "email": "maja.kossakowska@alior.pl",
   "phoneNumber": "222222222",
-  "jobTitle":"Ekspert ds. Kadr i Płac",
-  "workPlace": "Kraków"
+  "jobTitle": "Ekspert ds. Kadr i Płac",
+  "workPlace": "Kraków",
+  "referralTypeId": 4
 }
 
 ### Add employee
@@ -75,14 +83,15 @@ POST http://localhost:8080/api/employees
 Content-Type: application/json
 
 {
-"surname": "Sapkowski",
-"name": "Marian",
-"dateOfBirth": "1969-06-10",
-"pesel": "69061036632",
-"email": "marian.sapkowski@alior.pl",
-"phoneNumber": "111111111",
-"jobTitle":"Menedżer Zespołu Infolinii",
-"workPlace": "Rzeszów"
+  "surname": "Sapkowski",
+  "name": "Marian",
+  "dateOfBirth": "1969-06-10",
+  "pesel": "69061036632",
+  "email": "marian.sapkowski@alior.pl",
+  "phoneNumber": "111111111",
+  "jobTitle": "Menedżer Zespołu Infolinii",
+  "workPlace": "Rzeszów",
+  "referralTypeId": 4
 }
 
 ### Get list

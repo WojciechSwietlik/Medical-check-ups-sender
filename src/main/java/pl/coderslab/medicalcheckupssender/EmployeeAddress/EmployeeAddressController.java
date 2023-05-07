@@ -21,12 +21,22 @@ public class EmployeeAddressController {
     public EmployeeAddressController(EmployeeAddressService employeeAddressService) {
         this.employeeAddressService = employeeAddressService;
     }
-
+    @Operation(summary = "Add employee address", description = "Fill data about employee address")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Success",
+                    content = @Content(schema = @Schema(implementation = EmployeeAddressDto[].class))),
+            @ApiResponse(responseCode = "404", description = "Datas are incomplited")
+    })
+    @PostMapping("/{id}")
+    public ResponseEntity<EmployeeAddressDto> addEmployeeAddress(@RequestBody @Valid EmployeeAddressDto addressDto) {
+        EmployeeAddressDto employeeDto = employeeAddressService.addEmployeeAddress(addressDto);
+        return ResponseEntity.ok(employeeDto);
+    }
     @Operation(summary = "Gets all employees addresses", description = "Gets list of all employees addresses")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Success",
-                    content = @Content(schema = @Schema(implementation = EmployeeDto[].class))),
-            @ApiResponse(responseCode = "404", description = "Movie displays cannot be found")
+                    content = @Content(schema = @Schema(implementation = EmployeeAddressDto[].class))),
+            @ApiResponse(responseCode = "404", description = "Employees addresses cannot be found")
     })
     @GetMapping
     public ResponseEntity<List<EmployeeAddressDto>> getEmployeeAddress() {
@@ -38,16 +48,10 @@ public class EmployeeAddressController {
         }
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity<EmployeeAddressDto> addEmployeeAddress(@RequestBody @Valid EmployeeAddressDto addressDto) {
-        EmployeeAddressDto employeeDto = employeeAddressService.addEmployeeAddress(addressDto);
-        return ResponseEntity.ok(employeeDto);
-    }
-
-    @Operation(summary = "Gets employee address by id", description = "Get employee address based on it's id")
+    @Operation(summary = "Gets employee address by id", description = "Get employee address based on id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Success",
-                    content = @Content(schema = @Schema(implementation = EmployeeDto.class))),
+                    content = @Content(schema = @Schema(implementation = EmployeeAddressDto.class))),
             @ApiResponse(responseCode = "404", description = "Employee address cannot be found")
     })
     @GetMapping("/{id}")
@@ -55,13 +59,24 @@ public class EmployeeAddressController {
         EmployeeAddressDto dto = employeeAddressService.getById(id);
         return dto != null ? ResponseEntity.ok(dto) : ResponseEntity.notFound().build();
     }
+    @Operation(summary = "Update employee address by id", description = "Update employee address based on id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Success",
+                    content = @Content(schema = @Schema(implementation = EmployeeAddressDto.class))),
+            @ApiResponse(responseCode = "404", description = "Employee address cannot be found")
+    })
 
     @PutMapping("/{id}")
     public ResponseEntity<EmployeeAddressDto> updateEmployeeAddress(@PathVariable Long id, @RequestBody @Valid EmployeeAddressDto employeeAddressDto) {
         EmployeeAddressDto dto = employeeAddressService.updateEmployeeAddress(id, employeeAddressDto);
         return ResponseEntity.ok(dto);
     }
-
+    @Operation(summary = "Delete employee address by id", description = "Delete employee address based on id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Success",
+                    content = @Content(schema = @Schema(implementation = EmployeeAddressDto.class))),
+            @ApiResponse(responseCode = "404", description = "Employee address cannot be found")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity deleteEmployeeAddress(@PathVariable Long id) {
         employeeAddressService.deleteById(id);

@@ -1,6 +1,7 @@
 package pl.coderslab.medicalcheckupssender.Employee;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
@@ -10,7 +11,8 @@ public interface EmployeeMapper {
 
     Employee mapToEntity(EmployeeDto dto);
 
-    EmployeeDto mapToDto(Employee employee);
+    @Mapping(source = "referralType.id", target = "referralTypeId")
+    EmployeeDto mapToDto(Employee entity);
 
     List<EmployeeDto> mapToDto(List<Employee> employees);
 }
