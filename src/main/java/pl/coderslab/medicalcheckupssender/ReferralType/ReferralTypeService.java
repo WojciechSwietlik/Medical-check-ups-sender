@@ -1,6 +1,7 @@
-package pl.coderslab.medicalcheckupssender.RefferalType;
+package pl.coderslab.medicalcheckupssender.ReferralType;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import pl.coderslab.medicalcheckupssender.Exception.IdMismatchException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -23,10 +24,10 @@ public class ReferralTypeService {
         return referralTypeMapper.mapToDto(referral);
     }
 
-    public ReferralTypeDto updateRefferalType(Long id, ReferralTypeDto dto) {
+    public ReferralTypeDto updateRefferalType(Long id, ReferralTypeDto dto) throws IdMismatchException {
         Assert.notNull(dto.getId(), "Id cannot be empty");
-        if (dto.getId().equals(id)) {
-            throw new IllegalArgumentException("Id's mismatch");
+        if (!dto.getId().equals(id)) {
+            throw new IdMismatchException("Id's mismatch");
         }
         if (!referralTypeRepository.existsById(id)) {
             throw new EntityNotFoundException("Refferal type doesn't exist");

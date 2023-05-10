@@ -7,6 +7,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.medicalcheckupssender.Exception.IdMismatchException;
+import pl.coderslab.medicalcheckupssender.Exception.ResourceNotFoundException;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -67,7 +69,7 @@ public class EmployeeController {
             @ApiResponse(responseCode = "404", description = "Employee cannot be found")
     })
     @PutMapping("/{id}")
-    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @RequestBody @Valid EmployeeDto employee) {
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @RequestBody @Valid EmployeeDto employee) throws IdMismatchException, ResourceNotFoundException {
         EmployeeDto dto = employeeService.updateEmployee(id, employee);
         return ResponseEntity.ok(dto);
     }

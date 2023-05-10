@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.medicalcheckupssender.EmployeeAddress.EmployeeAddressDto;
+import pl.coderslab.medicalcheckupssender.Exception.IdMismatchException;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -69,7 +70,7 @@ public class HealthFacilityController {
     })
 
     @PutMapping("/{id}")
-    public ResponseEntity<HealthFacilityDto> updateHealthFacility(@PathVariable Long id, @RequestBody @Valid HealthFacilityDto healthFacility) {
+    public ResponseEntity<HealthFacilityDto> updateHealthFacility(@PathVariable Long id, @RequestBody @Valid HealthFacilityDto healthFacility) throws IdMismatchException {
         HealthFacilityDto dto = healthFacilityService.updateHealthFacility(id, healthFacility);
         return ResponseEntity.ok(dto);
     }

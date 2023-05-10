@@ -2,8 +2,9 @@ package pl.coderslab.medicalcheckupssender.Employee;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.hibernate.mapping.ToOne;
 import org.hibernate.validator.constraints.pl.PESEL;
-import pl.coderslab.medicalcheckupssender.RefferalType.ReferralType;
+import pl.coderslab.medicalcheckupssender.ReferralType.ReferralType;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -11,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Data
 @Entity
@@ -41,6 +43,7 @@ public class Employee {
     private String jobTitle;
     @NotBlank
     private String workPlace;
-    @OneToOne
+    @ManyToOne
     private ReferralType referralType;
+
 }

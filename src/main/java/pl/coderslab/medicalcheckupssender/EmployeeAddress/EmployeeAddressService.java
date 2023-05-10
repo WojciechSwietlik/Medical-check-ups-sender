@@ -29,6 +29,10 @@ public class EmployeeAddressService {
         return employeeAddressMapper.mapToDto(employeeAddressRepository.findById(id).orElse(null));
     }
 
+    public EmployeeAddressDto getByEmployeeId(Long id) {
+        return employeeAddressMapper.mapToDto(employeeAddressRepository.findByEmployee_Id(id).orElse(null));
+    }
+
     public void deleteById(Long id) {
         employeeAddressRepository.deleteById(id);
     }

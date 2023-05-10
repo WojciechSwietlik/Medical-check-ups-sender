@@ -1,4 +1,4 @@
-package pl.coderslab.medicalcheckupssender.RefferalType;
+package pl.coderslab.medicalcheckupssender.ReferralType;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

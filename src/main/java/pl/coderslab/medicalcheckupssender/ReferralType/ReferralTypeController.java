@@ -1,4 +1,4 @@
-package pl.coderslab.medicalcheckupssender.RefferalType;
+package pl.coderslab.medicalcheckupssender.ReferralType;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.medicalcheckupssender.EmployeeAddress.EmployeeAddressDto;
+import pl.coderslab.medicalcheckupssender.Exception.IdMismatchException;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -68,7 +69,7 @@ public class ReferralTypeController {
             @ApiResponse(responseCode = "404", description = "Referral type cannot be found")
     })
     @PutMapping("/{id}")
-    public ResponseEntity<ReferralTypeDto> updateReferralType(@PathVariable Long id, @RequestBody @Valid ReferralTypeDto referralType) {
+    public ResponseEntity<ReferralTypeDto> updateReferralType(@PathVariable Long id, @RequestBody @Valid ReferralTypeDto referralType) throws IdMismatchException {
         ReferralTypeDto dto = referralTypeService.updateRefferalType(id, referralType);
         return ResponseEntity.ok(dto);
     }

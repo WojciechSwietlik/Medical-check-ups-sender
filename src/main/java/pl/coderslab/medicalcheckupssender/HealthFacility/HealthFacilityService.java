@@ -2,9 +2,11 @@ package pl.coderslab.medicalcheckupssender.HealthFacility;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import pl.coderslab.medicalcheckupssender.Exception.IdMismatchException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+
 
 @Service
 public class HealthFacilityService {
@@ -24,10 +26,10 @@ public class HealthFacilityService {
         return healthFacilityMapper.mapToDto(healthFacility);
     }
 
-    public HealthFacilityDto updateHealthFacility(Long id, HealthFacilityDto dto) {
+    public HealthFacilityDto updateHealthFacility(Long id, HealthFacilityDto dto) throws IdMismatchException {
         Assert.notNull(dto.getId(), "Id cannot be empty");
-        if (dto.getId().equals(id)) {
-            throw new IllegalArgumentException("Id's mismatch");
+        if (!dto.getId().equals(id)) {
+            throw new IdMismatchException("Id's mismatch");
         }
         if (!healthFacilityRepository.existsById(id)) {
             throw new EntityNotFoundException("Health facility doesn't exist");
@@ -39,6 +41,10 @@ public class HealthFacilityService {
 
     public List<HealthFacilityDto> getAll() {
         return healthFacilityMapper.mapToDto(healthFacilityRepository.findAll());
+    }
+
+    public List<HealthFacilityDto> findByCityName(String cityName) {
+        return healthFacilityMapper.mapToDto(healthFacilityRepository.findHealthFacilityByCity(cityName));
     }
 
     public HealthFacilityDto getById(Long id) {

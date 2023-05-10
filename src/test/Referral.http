@@ -10,6 +10,7 @@ Content-Type: application/json
   "harmfulFactors4": "N/A",
   "harmfulFactors5": "N/A"
 }
+
 ### Add referral type
 POST http://localhost:8080/api/referral
 Content-Type: application/json
@@ -22,18 +23,7 @@ Content-Type: application/json
   "harmfulFactors4": "N/A",
   "harmfulFactors5": "N/A"
 }
-### Add referral type
-POST http://localhost:8080/api/referral
-Content-Type: application/json
 
-{
-  "description": "3 - supervisor",
-  "harmfulFactors1": "Stress",
-  "harmfulFactors2": "Work in a forced position",
-  "harmfulFactors3": "Decision-making and accountability position",
-  "harmfulFactors4": "N/A",
-  "harmfulFactors5": "N/A"
-}
 ### Add referral type
 POST http://localhost:8080/api/referral
 Content-Type: application/json
@@ -42,7 +32,24 @@ Content-Type: application/json
   "description": "4 - company car",
   "harmfulFactors1": "Stress",
   "harmfulFactors2": "Work in a forced position",
-  "harmfulFactors3": "Driving a company car",
+  "harmfulFactors3": "Decision-making and accountability position",
   "harmfulFactors4": "N/A",
-  "harmfulFactors5": "N/A"
+  "harmfulFactors5": "Driving a company car"
 }
+
+### Add referral type
+POST http://localhost:8080/api/referral/3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "description": "3 - supervisor",
+  "harmfulFactors1": "Stress",
+  "harmfulFactors2": "Work in a forced position",
+  "harmfulFactors3": "Decision-making and accountability position",
+  "harmfulFactors4": "N/A",
+  "harmfulFactors5": "Company car"
+}
+
+### Update referral type
+PUT http://localhost:8080/api/referral

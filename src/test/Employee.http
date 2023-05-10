@@ -11,7 +11,8 @@ Content-Type: application/json
   "phoneNumber": "666666666",
   "jobTitle": "Doradca klienta",
   "workPlace": "Kraków",
-  "referralTypeId": 1
+  "referralTypeId": 1,
+  "referralTypeDescription": "1 - office worker"
 }
 
 ### Add employee
@@ -27,7 +28,8 @@ Content-Type: application/json
   "phoneNumber": "555555555",
   "jobTitle": "Dyrektor Oddziału",
   "workPlace": "Warszawa",
-  "referralTypeId": 2
+  "referralTypeId": 3,
+  "referralTypeDescription": "3 - supervisor"
 }
 
 ### Add employee
@@ -43,7 +45,8 @@ Content-Type: application/json
   "phoneNumber": "444444444",
   "jobTitle": "Specjalista ds. Help Desk",
   "workPlace": "Gdańsk",
-  "referralTypeId": 3
+  "referralTypeId": 2,
+  "referralTypeDescription": "2 - callcenter worker"
 }
 
 ### Add employee
@@ -59,7 +62,8 @@ Content-Type: application/json
   "phoneNumber": "333333333",
   "jobTitle": "Specjalista ds. Windykacji Terenowej",
   "workPlace": "Poznań",
-  "referralTypeId": 4
+  "referralTypeId": 4,
+  "referralTypeDescription": "4 - company car"
 }
 
 ### Add employee
@@ -75,7 +79,8 @@ Content-Type: application/json
   "phoneNumber": "222222222",
   "jobTitle": "Ekspert ds. Kadr i Płac",
   "workPlace": "Kraków",
-  "referralTypeId": 4
+  "referralTypeId": 1,
+  "referralTypeDescription": "1 - office worker"
 }
 
 ### Add employee
@@ -91,7 +96,8 @@ Content-Type: application/json
   "phoneNumber": "111111111",
   "jobTitle": "Menedżer Zespołu Infolinii",
   "workPlace": "Rzeszów",
-  "referralTypeId": 4
+  "referralTypeId": 3,
+  "referralTypeDescription": "3 - office worker"
 }
 
 ### Get list

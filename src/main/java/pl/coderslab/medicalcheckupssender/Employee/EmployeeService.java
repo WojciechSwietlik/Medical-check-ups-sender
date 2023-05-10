@@ -2,6 +2,8 @@ package pl.coderslab.medicalcheckupssender.Employee;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import pl.coderslab.medicalcheckupssender.Exception.IdMismatchException;
+import pl.coderslab.medicalcheckupssender.Exception.ResourceNotFoundException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -32,13 +34,13 @@ public class EmployeeService {
         return employeeMapper.mapToDto(employeeRepository.findById(id).orElse(null));
     }
 
-    public EmployeeDto updateEmployee(Long id, EmployeeDto dto) {
+    public EmployeeDto updateEmployee(Long id, EmployeeDto dto) throws IdMismatchException, ResourceNotFoundException {
         Assert.notNull(dto.getId(), "Id cannot be empty");
-        if (dto.getId().equals(id)) {
-            throw new IllegalArgumentException("Id's mismatch");
+        if (!dto.getId().equals(id)) {
+            throw new IdMismatchException("Id's mismatch");
         }
         if (!employeeRepository.existsById(id)) {
-            throw new EntityNotFoundException("Employee doesn't exist");
+            throw new ResourceNotFoundException("Employee doesn't exist");
         }
         Employee entity = employeeMapper.mapToEntity(dto);
         employeeRepository.save(entity);

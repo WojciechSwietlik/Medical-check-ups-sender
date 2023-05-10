@@ -1,4 +1,4 @@
-package pl.coderslab.medicalcheckupssender.RefferalType;
+package pl.coderslab.medicalcheckupssender.ReferralType;
 import org.mapstruct.Mapper;
 
 import java.util.List;

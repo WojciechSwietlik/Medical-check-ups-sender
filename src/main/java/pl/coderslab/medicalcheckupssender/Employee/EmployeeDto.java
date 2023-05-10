@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.pl.PESEL;
-import pl.coderslab.medicalcheckupssender.RefferalType.ReferralType;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -52,4 +51,7 @@ public class EmployeeDto {
 
     @Schema(description = "Referral Id", example = "1 - office worker, 2 - callcenter worker, 3 - supervisor, 4 - company car", required = true)
     private Long referralTypeId;
+
+    @Schema(description = "Referral description", example = "1 - office worker, 2 - callcenter worker, 3 - supervisor, 4 - company car", required = true)
+    private String referralTypeDescription;
 }
