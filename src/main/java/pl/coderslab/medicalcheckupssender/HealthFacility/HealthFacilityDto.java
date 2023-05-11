@@ -29,4 +29,15 @@ public class HealthFacilityDto {
     @NotBlank
     @Schema(description = "Phone number of health facility", example = "12 311 21 21")
     private String phoneNumber;
+
+    @Override
+    public String toString() {
+        return
+                "nazwa jednostki: '" + nameOfHealthFacility + '\'' +
+                        ", ulica:'" + streetName + '\'' +
+                        ", numer domu:'" + houseNumber + '\'' +
+                        ", kod pocztowy:'" + zipCode + '\'' +
+                        ", miasto:'" + city + '\'' +
+                        ", numer telefonu='" + phoneNumber + '\'';
+    }
 }

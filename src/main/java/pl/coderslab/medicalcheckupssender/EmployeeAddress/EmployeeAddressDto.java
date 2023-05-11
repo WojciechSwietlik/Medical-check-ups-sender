@@ -27,4 +27,13 @@ public class EmployeeAddressDto {
     @NotBlank
     @Schema(description = "City", example = "Warszawa")
     private String city;
+
+    @Override
+    public String toString() {
+        return "Street name: " + streetName +
+                ", House number: " + houseNumber +
+                ", Apartment number: " + apartmentNumber +
+                ", Zip code: " + zipCode  +
+                ", City: " + city;
+    }
 }
