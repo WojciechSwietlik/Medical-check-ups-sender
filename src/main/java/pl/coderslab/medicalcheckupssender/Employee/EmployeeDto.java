@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class EmployeeDto {
+
     @Schema(description = "Employee id", example = "2")
     private Long id;
 
@@ -52,6 +53,8 @@ public class EmployeeDto {
     @Schema(description = "Referral Id", example = "1 - office worker, 2 - callcenter worker, 3 - supervisor, 4 - company car", required = true)
     private Long referralTypeId;
 
-    @Schema(description = "Referral description", example = "1 - office worker, 2 - callcenter worker, 3 - supervisor, 4 - company car", required = true)
+    @Schema(description = "Referral description", example = "1 - office worker: stress, working in a forced position. 2 - callcenter worker: stress, working in a forced position, working with headphones. " +
+            "3 - supervisor: stress, working in a forced position, decision-making position. 4 - company car: stress, working in a forced position, driving a company car.", required = true)
     private String referralTypeDescription;
+
 }

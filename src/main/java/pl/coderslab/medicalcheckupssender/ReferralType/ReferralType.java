@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
 
 
 @Data
@@ -19,14 +19,5 @@ public class ReferralType {
     private Long id;
     @NotBlank
     private String description;
-    @NotBlank
-    private String harmfulFactors1;
-    @NotBlank
-    private String harmfulFactors2;
-    @NotBlank
-    private String harmfulFactors3;
-    @NotBlank
-    private String harmfulFactors4;
-    @NotNull
-    private String harmfulFactors5;
+
 }

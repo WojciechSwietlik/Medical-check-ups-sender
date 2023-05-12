@@ -10,7 +10,7 @@ Content-Type: application/json
   "email": "a.abakanowicz@alior.pl",
   "phoneNumber": "666666666",
   "jobTitle": "Doradca klienta",
-  "workPlace": "Kraków",
+  "workPlace": "Cracow",
   "referralTypeId": 1,
   "referralTypeDescription": "1 - office worker"
 }
@@ -26,8 +26,8 @@ Content-Type: application/json
   "pesel": "68020174677",
   "email": "m.malczewski@alior.pl",
   "phoneNumber": "555555555",
-  "jobTitle": "Dyrektor Oddziału",
-  "workPlace": "Warszawa",
+  "jobTitle": "Branch Manager",
+  "workPlace": "Warsaw",
   "referralTypeId": 3,
   "referralTypeDescription": "3 - supervisor"
 }
@@ -43,8 +43,8 @@ Content-Type: application/json
   "pesel": "89031198818",
   "email": "a.matejko@alior.pl",
   "phoneNumber": "444444444",
-  "jobTitle": "Specjalista ds. Help Desk",
-  "workPlace": "Gdańsk",
+  "jobTitle": "Help Desk Specialist",
+  "workPlace": "Rzeszow",
   "referralTypeId": 2,
   "referralTypeDescription": "2 - callcenter worker"
 }
@@ -60,8 +60,8 @@ Content-Type: application/json
   "pesel": "87042598591",
   "email": "a.duda-gracz@alior.pl",
   "phoneNumber": "333333333",
-  "jobTitle": "Specjalista ds. Windykacji Terenowej",
-  "workPlace": "Poznań",
+  "jobTitle": "Debt collector",
+  "workPlace": "Poznan",
   "referralTypeId": 4,
   "referralTypeDescription": "4 - company car"
 }

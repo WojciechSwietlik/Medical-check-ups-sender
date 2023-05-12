@@ -23,7 +23,7 @@ public class EmailSenderController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Success",
                     content = @Content(schema = @Schema(implementation = EmployeeDto[].class))),
-            @ApiResponse(responseCode = "404", description = "Informations are incomplited")
+            @ApiResponse(responseCode = "404", description = "Id doesnt exist")
     })
     @PostMapping("/api/send-email")
     public void sendEmail(@RequestBody EmailRequest emailRequest) {

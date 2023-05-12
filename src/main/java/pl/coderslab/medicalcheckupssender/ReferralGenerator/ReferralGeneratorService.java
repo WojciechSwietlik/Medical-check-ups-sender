@@ -4,28 +4,33 @@ package pl.coderslab.medicalcheckupssender.ReferralGenerator;
 import com.itextpdf.text.*;
 
 import com.itextpdf.text.pdf.PdfWriter;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.medicalcheckupssender.Employee.EmployeeDto;
 import pl.coderslab.medicalcheckupssender.Employee.EmployeeService;
 import pl.coderslab.medicalcheckupssender.EmployeeAddress.EmployeeAddressDto;
 import pl.coderslab.medicalcheckupssender.EmployeeAddress.EmployeeAddressService;
-import pl.coderslab.medicalcheckupssender.ReferralType.ReferralTypeService;
+import pl.coderslab.medicalcheckupssender.HealthFacility.HealthFacilityService;
+
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Service
 public class ReferralGeneratorService {
     private final EmployeeService employeeService;
     private final EmployeeAddressService employeeAddressService;
-    private final ReferralTypeService referralTypeService;
 
-    public ReferralGeneratorService(EmployeeService employeeService, EmployeeAddressService employeeAddressService, ReferralTypeService referralTypeService) {
+
+    public ReferralGeneratorService(EmployeeService employeeService, EmployeeAddressService employeeAddressService) {
         this.employeeService = employeeService;
         this.employeeAddressService = employeeAddressService;
-        this.referralTypeService = referralTypeService;
     }
 
     @Transactional(readOnly = true)
@@ -34,8 +39,11 @@ public class ReferralGeneratorService {
         EmployeeDto employeeDto = employeeService.getById(employeeId);
         EmployeeAddressDto employeeAddress = employeeAddressService.getByEmployeeId(employeeId);
 
+        LocalDate localDate = LocalDate.now();
+
         PdfWriter.getInstance(document, response.getOutputStream());
         document.open();
+
         Font fontTitle = FontFactory.getFont(FontFactory.HELVETICA, 16, BaseColor.BLACK);
 
         Paragraph paragraph = new Paragraph("Labor Medicine Referral", fontTitle);
@@ -49,8 +57,10 @@ public class ReferralGeneratorService {
         Paragraph text4 = new Paragraph("Employee address:");
         Paragraph text2 = new Paragraph("%s".formatted(
                 employeeAddress.toString(), font));
-        Paragraph text3 = new Paragraph("Referral Type: %s".formatted(
+        Paragraph text3 = new Paragraph("Referral type and harmful factors: %s".formatted(
                 employeeDto.getReferralTypeDescription(), font));
+        Paragraph dateTime = new Paragraph("Date of generate referral: %s".formatted(String.valueOf(localDate), font));
+        dateTime.setAlignment(Paragraph.ALIGN_BOTTOM);
 
         document.add(paragraph);
         document.add(Chunk.NEWLINE);
@@ -65,6 +75,8 @@ public class ReferralGeneratorService {
         document.add(text2);
         document.add(Chunk.NEWLINE);
         document.add(text3);
+        document.add(Chunk.NEWLINE);
+        document.add(dateTime);
         document.close();
     }
 }

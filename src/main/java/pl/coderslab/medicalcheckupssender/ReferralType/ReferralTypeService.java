@@ -1,4 +1,5 @@
 package pl.coderslab.medicalcheckupssender.ReferralType;
+
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import pl.coderslab.medicalcheckupssender.Exception.IdMismatchException;
@@ -37,6 +38,7 @@ public class ReferralTypeService {
         referralTypeRepository.save(entity);
         return referralTypeMapper.mapToDto(entity);
     }
+
     public List<ReferralTypeDto> getAll() {
         return referralTypeMapper.mapToDto(referralTypeRepository.findAll());
     }
@@ -47,10 +49,6 @@ public class ReferralTypeService {
 
     public void deleteById(Long id) {
         referralTypeRepository.deleteById(id);
-    }
-
-    public List<ReferralTypeDto> findByCityName(String cityName) {
-        return healthFacilityMapper.mapToDto(healthFacilityRepository.findHealthFacilityByCity(cityName));
     }
 
 }
