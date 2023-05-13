@@ -6,7 +6,6 @@ import pl.coderslab.medicalcheckupssender.Employee.Employee;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import java.util.Objects;
 
 @Data
 @Entity

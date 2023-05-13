@@ -5,7 +5,6 @@ import org.springframework.util.Assert;
 import pl.coderslab.medicalcheckupssender.Exception.IdMismatchException;
 import pl.coderslab.medicalcheckupssender.Exception.ResourceNotFoundException;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service

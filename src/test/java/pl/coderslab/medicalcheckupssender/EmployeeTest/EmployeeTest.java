@@ -1,7 +1,10 @@
-package pl.coderslab.medicalcheckupssender.Employee;
+package pl.coderslab.medicalcheckupssender.EmployeeTest;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.pl.PESEL;
 import pl.coderslab.medicalcheckupssender.ReferralType.ReferralType;
 
@@ -16,9 +19,8 @@ import java.time.LocalDate;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "employees")
-
-public class Employee {
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class EmployeeTest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,5 +45,4 @@ public class Employee {
     private String workPlace;
     @ManyToOne
     private ReferralType referralType;
-
 }
